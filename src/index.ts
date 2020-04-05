@@ -6,9 +6,12 @@ import { createConnection } from "typeorm";
 
 const typeDefs = importSchema(__dirname+"/schema.graphql")
 
+export const startServer = async() => {
+    const server = new GraphQLServer({ typeDefs, resolvers });
+    await createConnection();
+    await server.start();
+    console.log('Server is running on localhost:4000');
+}
 
-const server = new GraphQLServer({ typeDefs, resolvers });
+startServer();
 
-createConnection().then(connection => {
-    server.start(() => console.log('Server is running on localhost:4000'))
-})

@@ -15,6 +15,7 @@
    "dependencies": {
       "bcryptjs": "^2.4.3",
       "graphql-import": "^1.0.1",
+      "graphql-request": "^1.8.2",
       "graphql-yoga": "^1.18.3",
       "pg": "^8.0.0",
       "reflect-metadata": "^0.1.13",
@@ -25,5 +26,19 @@
       "start": "nodemon --exec ts-node --files src/index.ts",
       "test": "jest",
       "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
+   },
+   "jest": {
+      "transform": {
+        "^.+\\.tsx?$": "ts-jest"
+      },
+      "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "jsx",
+        "json",
+        "node"
+      ]
    }
 }
