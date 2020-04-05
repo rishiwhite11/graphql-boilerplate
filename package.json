@@ -8,6 +8,7 @@
       "@types/node": "^13.11.0",
       "gql2ts": "^1.10.1",
       "jest": "^25.2.7",
+      "start-server-and-test": "^1.10.11",
       "ts-jest": "^25.3.1",
       "ts-node": "8.8.1",
       "typescript": "^3.8.3"
@@ -24,22 +25,23 @@
    },
    "scripts": {
       "start": "NODE_ENV=development nodemon --exec ts-node --files src/index.ts",
-      "test-server":"NODE_ENV=test ts-node --files src/index.ts",
+      "test-server": "NODE_ENV=test ts-node --files src/index.ts",
       "test": "NODE_ENV=test jest",
-      "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
+      "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts",
+      "ci": "start-server-and-test test-server http://localhost:4000 test"
    },
    "jest": {
       "transform": {
-        "^.+\\.tsx?$": "ts-jest"
+         "^.+\\.tsx?$": "ts-jest"
       },
       "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
       "moduleFileExtensions": [
-        "ts",
-        "tsx",
-        "js",
-        "jsx",
-        "json",
-        "node"
+         "ts",
+         "tsx",
+         "js",
+         "jsx",
+         "json",
+         "node"
       ]
    }
 }

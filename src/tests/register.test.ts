@@ -1,18 +1,20 @@
 import {request} from "graphql-request";
 import { host } from "./constants";
 import { User } from "../entity/User";
-import { createTypeormConnection } from "../utils/createTypeormConnection";
+import { startServer } from "../startServer";
 
 const email = "xxx@gmail.com";
 const password = "darksector";
-
+let getHost = () => "";
 const mutation = `
     mutation {
         register(email: "${email}", password: "${password}")
     }
 `
-beforeAll(async() => {
-    await createTypeormConnection();
+beforeAll(async () => {
+    const app:any = await startServer();
+    const {port} = app.address();
+    getHost = () => `http://127.0.0.1:${port}`
 })
 test("Register User", async() => {
     
